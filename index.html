@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Feedback System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Student Feedback Form</h1>
+            <p>We value your feedback to improve our courses.</p>
+        </div>
+        <form action="/submit" method="POST" class="feedback-form">
+            <div class="form-group">
+                <label for="name"><i class="fas fa-user"></i> Student Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="roll-number"><i class="fas fa-id-card"></i> Roll Number:</label>
+                <input type="text" id="roll-number" name="roll_number" placeholder="Enter your roll number" required>
+            </div>
+
+            <div class="form-group">
+                <label for="course"><i class="fas fa-book-open"></i> Course:</label>
+                <select id="course" name="course" required>
+                    <option value="">Select Course</option>
+                    <option value="Electronics and Communication Engineering">Electronics and Communication Engineering</option>
+                    <option value="Computer Science Engineering">Computer Science Engineering</option>
+                    <option value="Electrical and Electronics Engineering">Electrical and Electronics Engineering</option>
+                    <option value="Civil Engineering">Civil Engineering</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="instructor"><i class="fas fa-chalkboard-teacher"></i> Instructor:</label>
+                <input type="text" id="instructor" name="instructor" placeholder="Enter the instructor's name" required>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-star"></i> Course Rating:</label>
+                <div class="rating">
+                    <input type="radio" id="rating5" name="rating" value="5" required><label for="rating5"></label>
+                    <input type="radio" id="rating4" name="rating" value="4"><label for="rating4"></label>
+                    <input type="radio" id="rating3" name="rating" value="3"><label for="rating3"></label>
+                    <input type="radio" id="rating2" name="rating" value="2"><label for="rating2"></label>
+                    <input type="radio" id="rating1" name="rating" value="1"><label for="rating1"></label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="feedback"><i class="fas fa-comment-dots"></i> Feedback:</label>
+                <textarea id="feedback" name="feedback" rows="5" placeholder="Share your thoughts..." required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Submit Feedback</button>
+        </form>
+    </div>
+</body>
+</html>
