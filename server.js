@@ -17,15 +17,16 @@ app.get('/', (req, res) => {
 
 // Route to handle form submission
 app.post('/submit', (req, res) => {
-    const { name, roll_number, course, instructor, rating, feedback } = req.body;
+    // Correctly map the 'name' from the form to 'student_name' for the database
+    const { name: student_name, roll_number, course, instructor, rating, feedback } = req.body;
     
     // Use the imported query and connection to insert data
-    connection.query(insertFeedback, [name, roll_number, course, instructor, rating, feedback], (err, results) => {
+    connection.query(insertFeedback, [student_name, roll_number, course, instructor, rating, feedback], (err, results) => {
         if (err) {
             console.error('Database Insert Error:', err);
             res.status(500).send('There was an error submitting your feedback. Please try again.');
         } else {
-            // Send a success response
+            // Send a success response and use the correct variable in the message
             res.send(`
                 <html>
                 <head>
@@ -36,7 +37,7 @@ app.post('/submit', (req, res) => {
                     <div class="container">
                         <div class="header">
                             <h1>Feedback Submitted!</h1>
-                            <p>Thank you for your valuable feedback, ${name}.</p>
+                            <p>Thank you for your valuable feedback, ${student_name}.</p>
                             <a href="/" style="text-decoration: none; margin-top: 20px; display: inline-block;">
                                 <button class="submit-btn">Submit Another</button>
                             </a>
